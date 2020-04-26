@@ -17,6 +17,7 @@ import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,11 +27,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-      final AlphaAnimation alphaAnimation = new AlphaAnimation(1,0);
+        final AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0);
         alphaAnimation.setDuration(1000);
         alphaAnimation.setFillAfter(true);
         alphaAnimation.setRepeatCount(Animation.INFINITE);
-       alphaAnimation.setRepeatMode(Animation.REVERSE);
+        alphaAnimation.setRepeatMode(Animation.REVERSE);
 
        /* final ScaleAnimation scaleAnimation = new ScaleAnimation(1,2,1,2,Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
         scaleAnimation.setDuration(1000);
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         translateAnimation.setInterpolator(new BounceInterpolator());*/
 
 
-        final RotateAnimation rotateAnimation = new RotateAnimation(0,360,Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+        final RotateAnimation rotateAnimation = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         rotateAnimation.setDuration(1000);
 
         final AnimationSet animationSet = new AnimationSet(true);
@@ -57,12 +58,24 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
         final ImageView imageView = findViewById(R.id.iv_main_animation);
         FloatingActionButton floatingActionButton = findViewById(R.id.fab_main_play);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            imageView.startAnimation(animationSet);
+                imageView.startAnimation(animationSet);
+            }
+        });
+
+
+        // lotttile when u want run with java
+
+        final LottieAnimationView lottieAnimationView = findViewById(R.id.lottie_main);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lottieAnimationView.playAnimation();
             }
         });
 
